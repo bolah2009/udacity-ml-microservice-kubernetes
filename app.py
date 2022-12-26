@@ -28,15 +28,8 @@ def home():
 
 @app.route("/healthcheck")
 def healthcheck():
-    response = app.response_class(
-        response=jsonify({"status": "OK"}),
-        status=200,
-        mimetype='application/json'
-    )
-
-    app.logger.info('Status request successfull')
-    return response
-
+    LOG.info('Status request successfull')
+    return jsonify({"status": "OK"})
 
 @app.route("/predict", methods=['POST'])
 def predict():
