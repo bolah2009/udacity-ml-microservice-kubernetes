@@ -8,6 +8,8 @@ dockerpath="bolah2009/udacity-ml-microservice:v1.0.0"
 
 # Step 2
 # Run the Docker Hub container with kubernetes
+# Removed generator=run-pod/v1 flag as it deprecated,
+# see https://github.com/kubernetes/kubernetes/pull/87077 for more details 
 kubectl run ml-microservice\
     --image=$dockerpath\
     --port=8000 --labels app=ml-microservice
