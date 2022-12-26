@@ -4,33 +4,18 @@
 
 # Step 1:
 # This is your Docker ID/path
-# dockerpath=<>
+dockerpath="bolah2009/udacity-ml-microservice:v1.0.0"
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-
+kubectl run ml-microservice\
+    --image=$dockerpath\
+    --port=8000 --labels app=ml-microservice
 
 # Step 3:
 # List kubernetes pods
+kubectl get pods
 
 # Step 4:
 # Forward the container port to a host
-
-
-
-
-#!/usr/bin/env bash
-
-dockerpath="noahgift/flasksklearn"
-
-# Run in Docker Hub container with kubernetes
-kubectl run flaskskearlndemo\
-    --generator=run-pod/v1\
-    --image=$dockerpath\
-    --port=80 --labels app=flaskskearlndemo
-
-# List kubernetes pods
-kubectl get pods
-
-# Forward the container port to host
-kubectl port-forward flaskskearlndemo 8000:80
+kubectl port-forward ml-microservice 8000:80

@@ -2,10 +2,11 @@ FROM python:3.7.3-stretch
 
 LABEL version="1.0" \
   description="A dockerfile to containerize \
-  a machine learning microservice using kubernetes"
+  a machine learning microservice using kubernetes" \
+  project="udacity"
 
 HEALTHCHECK --interval=5m --timeout=3s --start-period=10s \
-  CMD curl -f http://localhost/healthcheck || exit 1
+  CMD curl -f http://localhost:8000/healthcheck || exit 1
 
 ## Step 1:
 # Create a working directory
@@ -13,7 +14,8 @@ WORKDIR /app
 
 ## Step 2:
 # Copy source code to working directory
-COPY . /app/
+COPY model_data /app/model_data/
+COPY app.py requirements.txt /app/
 
 ## Step 3:
 # Install packages from requirements.txt

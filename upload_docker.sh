@@ -5,14 +5,14 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath="bolah2009/ml_microservice"
+dockerpath="bolah2009/udacity-ml-microservice"
 
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 
 # Tag locally before pushing to the Dockerhub
-docker tag ml_microservice $dockerpath:v1.0.0
+docker tag udacity-ml-microservice $dockerpath:v1.0.0
 docker images
 
 # Log into the Dockerhub from your local terminal
